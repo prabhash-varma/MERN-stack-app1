@@ -19,6 +19,21 @@ function App() {
 
 
   const submit = ()=>{
+
+    if(name===''){
+      alert('Please enter valid name');
+    }
+    else if(age==0  || isNaN(age)){
+      alert('Please enter valid age');
+    }
+    else if(email===''){
+      alert('Please enter valid email');
+    }
+    else if(message===''){
+      alert('Please enter valid message');
+    }
+    else{
+
     Axios.post("https://mymern-project1.herokuapp.com/createUser",{name,age,email,message}).then(()=>{
       console.log("user created");
       console.log(name);
@@ -28,6 +43,8 @@ function App() {
       alert('User created')
     
     })
+
+  }
   }
 
 
@@ -39,11 +56,6 @@ function App() {
     console.log(obj);
 
     console.log(obj[0].name);
-
-   
-
-    
-
     Axios.post("https://mymern-project1.herokuapp.com/deleteUser",{name:obj[0].name}).then(()=>{
       console.log("user deleted");
       alert('user Deleted');
